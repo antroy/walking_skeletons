@@ -1,7 +1,6 @@
 package antroy.restservice;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +13,10 @@ public class HelloController {
         return "Greetings from Spring Boot!";
     }
 
+    @RequestMapping("/get/{id}")
+    public String getId(@PathVariable("id") long id) {
+        return "Greetings from Spring Boot with id " + id;
+    }
     @RequestMapping("/list")
     public List list() {
         List out = new ArrayList<>();
@@ -28,5 +31,15 @@ public class HelloController {
         out.setAddress1("1 Sunset Blvd");
         out.setAddress2("Beverley Hills");
         return out;
+    }
+
+    @RequestMapping(value = "/post", method = RequestMethod.POST)
+    public String post() {
+        return "Greetings from Spring Boot!";
+    }
+
+    @RequestMapping(value = "/postwithbody", method = RequestMethod.POST, consumes = "application/json")
+    public String postWithData(@RequestBody Customer customer) {
+        return "User " + customer.getName() + " Created";
     }
 }

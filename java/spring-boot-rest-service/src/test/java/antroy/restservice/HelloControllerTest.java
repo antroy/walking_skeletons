@@ -36,6 +36,13 @@ public class HelloControllerTest {
     }
 
     @Test
+    public void testGetWithParam() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.post("/get/123").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(equalTo("Greetings from Spring Boot with id 123")));
+    }
+
+    @Test
     public void testList() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/list").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -47,5 +54,22 @@ public class HelloControllerTest {
         mvc.perform(MockMvcRequestBuilders.get("/object").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("{\"name\":\"Bob\",\"address1\":\"1 Sunset Blvd\",\"address2\":\"Beverley Hills\"}")));
+    }
+
+    @Test
+    public void testPost() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.post("/post").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(equalTo("Greetings from Spring Boot!")));
+    }
+
+    @Test
+    public void testPostWithBody() throws Exception {
+        String postdata = "{\"name\":\"Brian\",\"address1\":\"22 Acacia Av\",\"address2\":\"London\"}";
+        mvc.perform(MockMvcRequestBuilders.post("/postwithbody").content(postdata)
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(equalTo("User Brian Created")));
     }
 }
