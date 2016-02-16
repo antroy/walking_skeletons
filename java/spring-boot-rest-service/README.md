@@ -23,14 +23,17 @@ Docker
 
 * Build the image
 
-    ``docker build -t antroy/java-simple-rest``
+    ``docker build -t antroy/java-simple-rest .``
 
 * Run the image (with -d to run as daemon), exposing port 8080 on the image to host port 1234
 
-    ``docker run -d -p 8080:1234 antroy/java-simple-rest``
+    ``docker run -d -p 1234:8080 antroy/java-simple-rest``
 
 * List images
 
     ``docker ps -a``
 
+Configuration
+-------------
 
+To allow Docker to pick up properties as Environment Variables that can be given to Docker, there are a number of options, but probably the simplest is to have a Coniguration class that pulls the values from environment variables with possible defaults.
