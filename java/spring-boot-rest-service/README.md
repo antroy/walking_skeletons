@@ -29,6 +29,10 @@ Docker
 
     ``docker run -d -p 1234:8080 antroy/java-simple-rest``
 
+* Run the image (with -d to run as daemon), exposing port 8080 on the image to host port 1234 and setting the NAME env var.
+
+    ``docker run -d -p 1234:8080 -e NAME=Bob antroy/java-simple-rest``
+
 * List images
 
     ``docker ps -a``
@@ -36,4 +40,4 @@ Docker
 Configuration
 -------------
 
-To allow Docker to pick up properties as Environment Variables that can be given to Docker, there are a number of options, but probably the simplest is to have a Coniguration class that pulls the values from environment variables with possible defaults.
+To allow Docker to pick up properties as Environment Variables that can be given to Docker, there are a number of options, but probably the simplest is to have a Coniguration class that pulls the values from environment variables with possible defaults. This is what is done in this example.
