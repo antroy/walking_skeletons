@@ -5,7 +5,7 @@ ENV NAME "from dockerfile"
 
 WORKDIR /usr/src/app
 
-COPY target/* ./
+COPY target/spring-boot-rest-service-${JAR_VERSION}.jar ./
 COPY scripts/* ./
 
 EXPOSE 8080
