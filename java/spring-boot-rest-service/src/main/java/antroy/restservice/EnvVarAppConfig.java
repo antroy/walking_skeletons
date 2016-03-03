@@ -16,11 +16,6 @@ public class EnvVarAppConfig implements AppConfig {
 
     @Override
     public String getName() {
-        //return SystemEnvironmentPropertySource.named("NAME").toString();
-//        String out = System.getProperty("NAME", "BBBBBBB");
-        if (name == null) {
-            name = "Not Set...";
-        }
         return name;
     }
 }
