@@ -34,6 +34,7 @@ public class HelloController {
     public String getId(@PathVariable("id") long id) {
         return "Greetings from Spring Boot with id " + id;
     }
+
     @RequestMapping("/list")
     public List list() {
         List out = new ArrayList<>();
