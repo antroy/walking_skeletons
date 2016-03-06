@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -17,7 +18,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = MockServletContext.class)
+@SpringApplicationConfiguration(classes = {MockServletContext.class, EnvVarAppConfig.class})
 @WebAppConfiguration
 public class HelloControllerTest {
 
@@ -49,6 +50,13 @@ public class HelloControllerTest {
                 .andExpect(content().string(equalTo("[\"Greetings from Spring Boot!\"]")));
     }
 
+    @Test
+    @Ignore
+    public void testConf() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/conf").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(equalTo("[\"Greetings from ${name}!\"]")));
+    }
     @Test
     public void testObject() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/object").accept(MediaType.APPLICATION_JSON))
