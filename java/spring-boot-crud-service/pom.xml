@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>antroy</groupId>
-    <artifactId>spring-boot-rest-service</artifactId>
+    <artifactId>spring-boot-crud-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>spring-boot-rest-service</name>
+    <name>spring-boot-crud-service</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
